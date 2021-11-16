@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+    <book id="SN2021111601"><!-- - book 标签描述一本图书 id 属性描述 的是图书 的编号 -->
+        <name>时间简史</name><!-- name 标签描述 的是图书 的信息 -->
+        <author>霍金</author><!-- author 单词是作者的意思 ，描述图书作者 -->
+        <price>99</price><!-- price 单词是价格，描述的是图书 的价格 -->
+    </book>
+    <book id="SN2021111602">
+        <name>Java从入门到放弃</name>
+        <author>李超</author>
+        <price>9.9</price>
+    </book>
+    <!-- 文本区域 -->
+    <book id="SN2021111603">
+        <name><![CDATA[<<<<纯文本，xml不解析>>>>>]]></name>
+        <author>xml</author>
+        <price>10</price>
+    </book>
+</books>
