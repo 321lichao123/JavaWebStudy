@@ -43,7 +43,7 @@ public class BookTest {
         for(Element book : books) {
             // asXML()：把标签对象转换为标签字符串
             // System.out.println(book.asXML());
-            String sn = book.attributeValue("sn");
+            String sn = book.attributeValue("id");
             Element name = book.element("name");
             String nameText = name.getText();
             String authorText = book.elementText("author");
