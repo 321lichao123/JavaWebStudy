@@ -4,6 +4,17 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <!-- context-param是上下文参数(它属于整个web工程) -->
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>context</param-value>
+    </context-param>
+    <context-param>
+        <param-name>psssword</param-name>
+        <param-value>admin@123</param-value>
+    </context-param>
+
+
     <!-- servlet标签给tomcat配置servlet程序 -->
     <servlet>
         <!-- servlet-name标签用来包裹servlet程序起的一个别名(一般是类名) -->
@@ -60,5 +71,32 @@
     <servlet-mapping>
         <servlet-name>TestServlet3</servlet-name>
         <url-pattern>/hello3</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ContextServlet</servlet-name>
+        <servlet-class>com.atguigu.servlet.ContextServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContextServlet</servlet-name>
+        <url-pattern>/context1</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ContextServlet1</servlet-name>
+        <servlet-class>com.atguigu.servlet.ContextServlet1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContextServlet1</servlet-name>
+        <url-pattern>/context2</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ContextServlet3</servlet-name>
+        <servlet-class>com.atguigu.servlet.ContextServlet3</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContextServlet3</servlet-name>
+        <url-pattern>/context3</url-pattern>
     </servlet-mapping>
 </web-app>
