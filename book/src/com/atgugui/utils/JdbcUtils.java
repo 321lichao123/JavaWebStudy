@@ -22,6 +22,7 @@ public class JdbcUtils {
 
     private static DruidDataSource source;
 
+    // 使用静态代码块进行初始化
     static {
         try {
             Properties properties = new Properties();
@@ -31,10 +32,6 @@ public class JdbcUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-
     }
 
     /**
