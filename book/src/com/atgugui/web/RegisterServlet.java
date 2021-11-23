@@ -17,7 +17,9 @@ import java.io.IOException;
  * @Description:
  */
 public class RegisterServlet  extends HttpServlet {
+
     UserServiceImpl userService = new UserServiceImpl();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 1、获取请求参数
