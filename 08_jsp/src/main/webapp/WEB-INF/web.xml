@@ -13,4 +13,8 @@
         <url-pattern>/printHtml</url-pattern>
     </servlet-mapping>
 
+    <!-- 配置监听器 -->
+    <listener>
+        <listener-class>com.atguigu.listener.MyServletContextListenerImpl</listener-class>
+    </listener>
 </web-app>
