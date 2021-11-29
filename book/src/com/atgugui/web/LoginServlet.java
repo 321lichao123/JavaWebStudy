@@ -1,7 +1,5 @@
 package com.atgugui.web;
 
-import com.atgugui.dao.UserDao;
-import com.atgugui.dao.UserDaoImpl;
 import com.atgugui.pojo.User;
 import com.atgugui.service.UserService;
 import com.atgugui.service.impl.UserServiceImpl;
@@ -25,11 +23,11 @@ public class LoginServlet extends HttpServlet {
         if (userService.login(new User(username, password, null)) != null) {
             // 4、登陆成功
             System.out.println("登陆成功");
-            req.getRequestDispatcher("pages/user/login_success.html").forward(req, resp);
+            req.getRequestDispatcher("pages/user/login_success.jsp").forward(req, resp);
         } else {
             // 3、用户名或者密码不正确跳回登陆页面
             System.out.println("用户名[" + username + "]或者密码[" + password + "]不正确");
-            req.getRequestDispatcher("pages/user/login.html").forward(req, resp);
+            req.getRequestDispatcher("pages/user/login.jsp").forward(req, resp);
         }
 
     }

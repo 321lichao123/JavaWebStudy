@@ -12,4 +12,13 @@
         <servlet-name>UploadServlet</servlet-name>
         <url-pattern>/uploadServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DwonloadServlet</servlet-name>
+        <servlet-class>com.atguigu.servlet.DwonloadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DwonloadServlet</servlet-name>
+        <url-pattern>/dwonloadServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
