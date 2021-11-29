@@ -16,12 +16,12 @@ public class UserServiceTest {
     private UserServiceImpl userService = new UserServiceImpl();
     @Test
     public void registerUser() {
-        userService.registerUser(new User("刘小芳", "lxf123", "lxf@126.com"));
+        userService.registerUser(new User(null, "刘小芳", "lxf123", "lxf@126.com"));
     }
 
     @Test
     public void login() {
-        User user = userService.login(new User("lichao", "lichao", null));
+        User user = userService.login(new User(null, "lichao", "lichao", null));
         if(user == null) {
             System.out.println("登录失败");
         } else {

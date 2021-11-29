@@ -39,7 +39,7 @@ public class UserDaoTest {
 
     @Test
     public void saveUser() {
-        int i = userDao.saveUser(new User("lichao", "lichao", "lichao@126.com"));
+        int i = userDao.saveUser(new User(null, "lichao", "lichao", "lichao@126.com"));
         if(i > 0) {
             System.out.println("注册成功");
         } else {

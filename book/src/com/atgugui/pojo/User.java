@@ -8,7 +8,7 @@ package com.atgugui.pojo;
  * @Description:
  */
 public class User {
-    private int id;
+    private Integer id;
     private String username;
     private String password;
     private String email;
@@ -16,7 +16,8 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, String email) {
+    public User(Integer id, String username, String password, String email) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;

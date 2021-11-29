@@ -13,13 +13,13 @@
 3、写base路径，一般都要修改静态资源的路径，因为base路径是相对于web工程的路径
 -->
 <%
-    String basePath = request.getScheme() +
-            "://" + request.getServerName() +
-            ":" + request.getServerPort() +
-                 request.getContextPath() +
-            "/";
+    String basePath = request.getScheme()
+            + "://" + request.getServerName()
+            + ":" + request.getServerPort()
+            + request.getContextPath()
+            + "/";
 %>
-
+<%=basePath%>
 <base href="<%=basePath%>">
 <link type="text/css" rel="stylesheet" href="static/css/style.css" >
 <script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>

@@ -32,15 +32,21 @@ public class RegisterServlet  extends HttpServlet {
             // 4、如果验证码正确，则判断用户名是否存在
             if(userService.existUsername(username)) {
                 // 5、如果用户名已存在，跳回注册页面
+                req.setAttribute("msg", "用户名已经存在");
+                req.setAttribute("username", username);
+                req.setAttribute("email", email);
                 System.out.println("用户名[" + username +"]已存在");
-                req.getRequestDispatcher("pages/user/regist.jsp").forward(req, resp);
+                req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
             } else {
                 // 6、如果用户名不存在，保存用户到数据库中
-                userService.registerUser(new User( username, password, email));
+                userService.registerUser(new User(null, username, password, email));
                 // 跳到注册成功页面
                 req.getRequestDispatcher("/pages/user/regist_success.jsp").forward(req,resp);
             }
         } else {
+            req.setAttribute("msg", "验证码不正确");
+            req.setAttribute("username", username);
+            req.setAttribute("email", email);
             // 3、如果不正确跳回注册页面
             System.out.println("验证码[" + code + "]错误");
             req.getRequestDispatcher("/pages/user/regist.jsp").forward(req,resp);
