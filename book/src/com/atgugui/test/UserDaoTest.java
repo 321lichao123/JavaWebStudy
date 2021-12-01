@@ -1,8 +1,7 @@
 package com.atgugui.test;
 
-import com.atgugui.dao.UserDaoImpl;
+import com.atgugui.dao.impl.UserDaoImpl;
 import com.atgugui.pojo.User;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.junit.Test;
 
 

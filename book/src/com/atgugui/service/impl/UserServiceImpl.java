@@ -1,6 +1,6 @@
 package com.atgugui.service.impl;
 
-import com.atgugui.dao.UserDaoImpl;
+import com.atgugui.dao.impl.UserDaoImpl;
 import com.atgugui.pojo.User;
 import com.atgugui.service.UserService;
 
