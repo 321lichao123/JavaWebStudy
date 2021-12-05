@@ -43,6 +43,10 @@ public class BookServiceImplTest {
         for (Book book : bookService.queryBook()) {
             System.out.println(book);
         }
+    }
 
+    @Test
+    public void page() {
+        System.out.println(bookService.page(1, 4));
     }
 }

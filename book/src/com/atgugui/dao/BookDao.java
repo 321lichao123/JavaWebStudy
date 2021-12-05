@@ -1,6 +1,7 @@
 package com.atgugui.dao;
 
 import com.atgugui.pojo.Book;
+import com.atgugui.pojo.Page;
 
 import java.util.List;
 
@@ -52,4 +53,13 @@ public interface BookDao {
     * @return:
     */
     public List<Book> queryBooks();
+
+    Number queryPageTotalCount();
+
+    List<Book> queryForPageItem(Integer begin, int pageSize);
+
+
+    List<Book> queryForPageItemByPrice(Integer begin, int pageSize, int min, int max);
+
+    Object queryPageTotalCountByPrice(int min, int max);
 }

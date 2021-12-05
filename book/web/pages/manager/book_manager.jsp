@@ -25,7 +25,7 @@
 				<td>库存</td>
 				<td colspan="2">操作</td>
 			</tr>
-			<c:forEach items="${requestScope.books}" var="book">
+			<c:forEach items="${requestScope.page.item}" var="book">
 				<tr>
 					<td>${book.name}</td>
 					<td>${book.price}</td>
@@ -47,6 +47,7 @@
 				<td><a href="pages/manager/book_edit.jsp?method=add">添加图书</a></td>
 			</tr>	
 		</table>
+		<%@include file="/pages/common/page_nav.jsp"%>
 	</div>
 
 	<%@include file="/pages/common/footer.jsp"%>
