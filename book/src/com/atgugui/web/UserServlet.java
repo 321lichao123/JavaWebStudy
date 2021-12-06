@@ -40,6 +40,7 @@ public class UserServlet extends BaseServlet {
         if (userService.login(user) != null) {
             // 4、登陆成功
             System.out.println("登陆成功");
+            req.getSession().setAttribute("user", user);
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         } else {
             // 3、用户名或者密码不正确跳回登陆页面
@@ -90,6 +91,14 @@ public class UserServlet extends BaseServlet {
             req.getRequestDispatcher("/pages/user/regist.jsp").forward(req,resp);
         }
     }
+
+    protected void logout(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 1、销毁session中用户登陆的信息
+        req.getSession().invalidate();
+        // 2、重定向到首页
+        resp.sendRedirect(req.getContextPath());
+    }
+
 
 //    @Override
 //    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

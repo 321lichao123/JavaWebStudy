@@ -19,14 +19,14 @@
 	<div style="float: left;">
 		<ul>
 			<li><a href="seesionServlet?action=createOrGetSession" target="target">Session的创建和获取（id号、是否为新创建）</a></li>
-			<li><a href="" target="target">Session域数据的存储</a></li>
-			<li><a href="" target="target">Session域数据的获取</a></li>			
+			<li><a href="seesionServlet?action=setAttribute" target="target">Session域数据的存储</a></li>
+			<li><a href="seesionServlet?action=getAttribute" target="target">Session域数据的获取</a></li>
 			<li>Session的存活</li>
 			<li>
 				<ul>
-					<li><a href="" target="target">Session的默认超时及配置</a></li>
-					<li><a href="" target="target">Session3秒超时销毁</a></li>
-					<li><a href="" target="target">Session马上销毁</a></li>
+					<li><a href="seesionServlet?action=defaultLife" target="target">Session的默认超时及配置</a></li>
+					<li><a href="seesionServlet?action=life3" target="target">Session3秒超时销毁</a></li>
+					<li><a href="seesionServlet?action=deleteNow" target="target">Session马上销毁</a></li>
 				</ul>
 			</li>
 			<li><a href="" target="target">浏览器和Session绑定的原理</a></li>

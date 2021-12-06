@@ -29,4 +29,8 @@
         <servlet-name>SeesionServlet</servlet-name>
         <url-pattern>/seesionServlet</url-pattern>
     </servlet-mapping>
+
+    <session-config>
+        <session-timeout>20</session-timeout>
+    </session-config>
 </web-app>
