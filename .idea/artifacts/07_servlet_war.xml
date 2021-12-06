@@ -3,10 +3,8 @@
     <output-path>$PROJECT_DIR$/07_servlet/target</output-path>
     <properties id="maven-jee-properties">
       <options>
-        <exploded>false</exploded>
         <module>07_servlet</module>
         <packaging>war</packaging>
-        <unpackNestedArchives>false</unpackNestedArchives>
       </options>
     </properties>
     <root id="archive" name="servlet-1.0-SNAPSHOT.war">
