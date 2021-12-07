@@ -3,8 +3,10 @@
     <output-path>$PROJECT_DIR$/13_cookie_session/target</output-path>
     <properties id="maven-jee-properties">
       <options>
+        <exploded>false</exploded>
         <module>13_cookie_session</module>
         <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
       </options>
     </properties>
     <root id="archive" name="cookie_session-1.0-SNAPSHOT.war">

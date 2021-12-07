@@ -13,6 +13,14 @@
     <meta charset="UTF-8">
     <title>书城首页</title>
     <%@include file="/pages/common/head.jsp"%>
+    <script>
+        $(function () {
+            $(".add_to_cart").click(function () {
+                var bookId = $(this).attr("bookId")
+                location.href = "${basePath}cartServlet?action=addItem&id=" + bookId;
+            })
+        })
+    </script>
 </head>
 <body>
 
@@ -76,7 +84,7 @@
                         <span class="sp2">${book.stock}</span>
                     </div>
                     <div class="book_add">
-                        <button>加入购物车</button>
+                        <button bookId="${book.id}" class="add_to_cart">加入购物车</button>
                     </div>
                 </div>
             </div>
