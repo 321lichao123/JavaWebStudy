@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import static com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY;
+
 /**
  * ClassName: UserServlet
  *
@@ -58,6 +60,10 @@ public class UserServlet extends BaseServlet {
     * @return:
     */
     protected void regist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // 获取验证码
+        String token = (String) req.getSession().getAttribute(KAPTCHA_SESSION_KEY);
+        // 删除验证码session
+        req.getSession().removeAttribute(KAPTCHA_SESSION_KEY);
         // 1、获取请求参数
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -67,7 +73,7 @@ public class UserServlet extends BaseServlet {
         User user = WebUtils.copyParamToBean(req.getParameterMap(), new User());
 
         // 2、判断验证码是否正确 暂时将验证码写死abcde后面修改
-        if ("abcde".equalsIgnoreCase(code)) {
+        if (token != null && token.equalsIgnoreCase(code)) {
             // 4、如果验证码正确，则判断用户名是否存在
             if(userService.existUsername(username)) {
                 // 5、如果用户名已存在，跳回注册页面
@@ -75,12 +81,14 @@ public class UserServlet extends BaseServlet {
                 req.setAttribute("username", username);
                 req.setAttribute("email", email);
                 System.out.println("用户名[" + username +"]已存在");
-                req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
+//                req.getRequestDispatcher("/pages/user/regist.jsp").forward(req, resp);
+                resp.sendRedirect("/pages/user/regist.jsp");
             } else {
                 // 6、如果用户名不存在，保存用户到数据库中
                 userService.registerUser(user);
                 // 跳到注册成功页面
-                req.getRequestDispatcher("/pages/user/regist_success.jsp").forward(req,resp);
+//                req.getRequestDispatcher("/pages/user/regist_success.jsp").forward(req,resp);
+                resp.sendRedirect("/pages/user/regist.jsp");
             }
         } else {
             req.setAttribute("msg", "验证码不正确");
@@ -88,7 +96,8 @@ public class UserServlet extends BaseServlet {
             req.setAttribute("email", email);
             // 3、如果不正确跳回注册页面
             System.out.println("验证码[" + code + "]错误");
-            req.getRequestDispatcher("/pages/user/regist.jsp").forward(req,resp);
+//            req.getRequestDispatcher("/pages/user/regist.jsp").forward(req,resp);
+            resp.sendRedirect("/pages/user/regist.jsp");
         }
     }
 
