@@ -37,12 +37,12 @@ public class UserServlet extends BaseServlet {
         String password = req.getParameter("password");
 
         User user = WebUtils.copyParamToBean(req.getParameterMap(), new User());
-
+        User loginUser = userService.login(user);
         // 2、判断用户名和密码是否正确
-        if (userService.login(user) != null) {
+        if (loginUser != null) {
             // 4、登陆成功
             System.out.println("登陆成功");
-            req.getSession().setAttribute("user", user);
+            req.getSession().setAttribute("user", loginUser);
             req.getRequestDispatcher("/pages/user/login_success.jsp").forward(req, resp);
         } else {
             // 3、用户名或者密码不正确跳回登陆页面
@@ -86,6 +86,8 @@ public class UserServlet extends BaseServlet {
             } else {
                 // 6、如果用户名不存在，保存用户到数据库中
                 userService.registerUser(user);
+                // 将用户存入session域中
+                req.getSession().setAttribute("user", user);
                 // 跳到注册成功页面
 //                req.getRequestDispatcher("/pages/user/regist_success.jsp").forward(req,resp);
                 resp.sendRedirect("/pages/user/regist.jsp");

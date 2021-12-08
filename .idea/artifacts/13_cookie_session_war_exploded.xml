@@ -6,7 +6,6 @@
         <exploded>true</exploded>
         <module>13_cookie_session</module>
         <packaging>war</packaging>
-        <unpackNestedArchives>false</unpackNestedArchives>
       </options>
     </properties>
     <root id="root">
