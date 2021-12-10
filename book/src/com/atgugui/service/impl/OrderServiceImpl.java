@@ -26,6 +26,9 @@ public class OrderServiceImpl implements OrderService {
         Order order = new Order(orderId, new Date(), cart.getTotalPrice(), 0, userId);
         // 3、保存订单
         orderDao.saveOrder(order);
+        // 模拟异常
+        Integer i =  12 / 0;
+
         // 4、生成订单项
         for (Map.Entry<Integer, CartItem>entry : cart.getItems().entrySet()) {
             CartItem cartItem = entry.getValue();

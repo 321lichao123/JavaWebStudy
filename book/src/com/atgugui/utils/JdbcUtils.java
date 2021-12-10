@@ -2,10 +2,7 @@ package com.atgugui.utils;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
-import com.alibaba.druid.pool.DruidPooledConnection;
 
-import javax.sql.DataSource;
-import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -21,6 +18,7 @@ import java.util.Properties;
 public class JdbcUtils {
 
     private static DruidDataSource source;
+    private static ThreadLocal<Connection> conns = new ThreadLocal<>();
 
     // 使用静态代码块进行初始化
     static {
@@ -42,13 +40,62 @@ public class JdbcUtils {
     * @return:
     */
     public static Connection getConnection() {
-        Connection conn = null;
+        Connection conn = conns.get();
+        if (conn == null) {
+            try {
+                conn = source.getConnection();
+                conns.set(conn);
+                conn.setAutoCommit(false);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+        }
+        return conn;
+        /*Connection conn = null;
         try {
             conn = source.getConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return conn;
+        return conn;*/
+    }
+
+    public static void commitAndClose() {
+        Connection connection = conns.get();
+        if (connection != null) {
+            try {
+                connection.commit();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+        }
+        // 一定要执行remove操作，否则会出错(因为tomcat服务器底层使用了线程池技术)
+        conns.remove();
+    }
+
+    public static void rollbackAndClose() {
+        Connection connection = conns.get();
+        if (connection != null) {
+            try {
+                connection.rollback();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+            }
+        }
+        // 一定要执行remove操作，否则会出错(因为tomcat服务器底层使用了线程池技术)
+        conns.remove();
     }
 
     /**
@@ -57,7 +104,7 @@ public class JdbcUtils {
     * @date: 2021/11/21 21:34<br/>
     * @param:<br/>
     * @return:
-    */
+
     public static void close(Connection conn) {
         try {
             if (conn != null)
@@ -65,5 +112,5 @@ public class JdbcUtils {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
