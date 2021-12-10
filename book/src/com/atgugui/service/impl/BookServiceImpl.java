@@ -60,6 +60,14 @@ public class BookServiceImpl implements BookService {
         return bookDao.queryBooks();
     }
 
+    /*
+    *@author 12468
+    *@Description
+    *@Date 2021/12/10 23:33
+    *@Param pageNo
+            pageSize
+    *@Return com.atgugui.pojo.Page<com.atgugui.pojo.Book>
+    **/
     @Override
     public Page<Book> page(int pageNo, int pageSize) {
         Page<Book> page = new Page<>();
