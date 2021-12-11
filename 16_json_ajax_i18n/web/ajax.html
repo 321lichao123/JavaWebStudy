@@ -8,13 +8,18 @@
 		<title>Insert title here</title>
 		<script type="text/javascript">
 			function ajaxRequest() {
-// 				1、我们首先要创建XMLHttpRequest 
-
-// 				2、调用open方法设置请求参数
-
-// 				3、调用send方法发送请求
-
-// 				4、在send方法前绑定onreadystatechange事件，处理请求完成后的操作。
+				// 1、我们首先要创建XMLHttpRequest
+				var xml =  new XMLHttpRequest();
+				// 2、调用open方法设置请求参数
+				xml.open("GET", "http://localhost:8080/16_json_ajax_i18n/ajaxServlet?action=javascriptToAjaxdoGet", true);
+				// 4、在send方法前绑定onreadystatechange事件，处理请求完成后的操作。
+				xml.onreadystatechange = function () {
+					if (xml.readyState === 4 && xml.status === 200) {
+						document.getElementById("div01").innerText = xml.responseText;
+					}
+				}
+				// 3、调用send方法发送请求
+				xml.send()
 			}
 		</script>
 	</head>
